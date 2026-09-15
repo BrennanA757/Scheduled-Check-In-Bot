@@ -6,12 +6,16 @@ import os
 import json
 import requests
 
+from dotenv import load_dotenv
+load_dotenv()
+
 BASE_URL = os.getenv("BASE_URL")
 TOKEN = os.getenv("TOKEN")
 
 OUTPUT_DIR = "artifact"
 FILES_DIR = os.path.join(OUTPUT_DIR, "files")
 INSTRUCTOR_ID = int(os.getenv("INSTRUCTOR_ID", "7"))
+MY_USER_ID = int(os.getenv("MY_USER_ID", "21"))
 
 os.makedirs(FILES_DIR, exist_ok=True)
 
@@ -73,6 +77,25 @@ def reply_to_checkin(post_id):
     except Exception as e:
         print("Unexpected error: ", e)
 
+def has_already_replied(post_id):
+    url = f"{BASE_URL}/api/v1/posts/{post_id}/comments"
+    headers = {"Authorization": f"Bearer {TOKEN}"}
+
+    resp= requests.get(url, headers=headers)
+
+    if resp.status_code != 200:
+        print("Error fetching comments for {post_id}: {resp.status_code}")
+        return False
+
+    comments = resp.json()
+
+    #Find one of my responses if it exists
+    for c in comments:
+        if(c.get("author_id") == MY_USER_ID):
+            return True
+
+    return False
+
 def main():
     raw_posts = get_posts()
 
@@ -103,13 +126,20 @@ def main():
     with open(os.path.join(OUTPUT_DIR, "collected.json"), "w") as f:
         json.dump(collected, f, indent=2)
 
+    with open(os.path.join(OUTPUT_DIR, "raw_posts.json"), "w") as f:
+        json.dump(raw_posts, f, indent=2)
+
     print("Collection complete.")
 
     #Task 2: Reply to check-ins
     checkins = [p for p in instructor_posts if is_checkin_post(p)]
 
     for chk in checkins:
-        reply_to_checkin(chk["id"])
+        if not has_already_replied(chk["id"]):
+            reply_to_checkin(chk["id"])
+            continue
+        else:
+            print(f"Already replied to post {chk["id"]}")
 
 if __name__ == "__main__":
     main()

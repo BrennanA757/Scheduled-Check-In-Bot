@@ -17,6 +17,7 @@ jobs:
       TOKEN: ${{ secrets.TOKEN }}
       BASE_URL: ${{ secrets.BASE_URL }}
       INSTRUCTOR_ID: ${{ vars.INSTRUCTOR_ID }}
+      MY_USER_ID: ${{ vars.MY_USER_ID}}
 
     steps:
       - name: Checkout repo

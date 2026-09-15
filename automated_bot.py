@@ -6,12 +6,12 @@ import os
 import json
 import requests
 
-BASE_URL = "https://practice.fhsucyber.com"
-TOKEN = "UIbPXfM9TzrJXlyax_VxTS8irAGwz7QLZZOiAWA79RE"
+BASE_URL = os.getenv("BASE_URL")
+TOKEN = os.getenv("TOKEN")
 
 OUTPUT_DIR = "artifact"
 FILES_DIR = os.path.join(OUTPUT_DIR, "files")
-INSTRUCTOR_ID = 7
+INSTRUCTOR_ID = int(os.getenv("INSTRUCTOR_ID", "7"))
 
 os.makedirs(FILES_DIR, exist_ok=True)
 

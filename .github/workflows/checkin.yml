@@ -14,8 +14,8 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      PRACTICE_API_TOKEN: ${{ secrets.PRACTICE_API_TOKEN }}
-      PRACTICE_API_URL: ${{ secrets.PRACTICE_API_URL }}
+      TOKEN: ${{ secrets.TOKEN }}
+      BASE_URL: ${{ secrets.BASE_URL }}
       INSTRUCTOR_ID: ${{ vars.INSTRUCTOR_ID }}
 
     steps:

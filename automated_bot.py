@@ -94,9 +94,6 @@ def main():
     with open(os.path.join(OUTPUT_DIR, "collected.json"), "w") as f:
         json.dump(collected, f, indent=2)
 
-    with open(os.path.join(OUTPUT_DIR, "raw.json"), "w") as f:
-        json.dump(raw_posts, f, indent=2)
-
     print("Collection complete.")
 
     #Task 2: Reply to check-ins

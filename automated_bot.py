@@ -16,12 +16,16 @@ INSTRUCTOR_ID = 7
 os.makedirs(FILES_DIR, exist_ok=True)
 
 def get_posts():
-    headers = {"Authorization": f"Bearer {TOKEN}"}
-    resp = requests.get(f"{BASE_URL}/api/v1/posts", headers=headers)
-
-    if resp.status_code != 200:
-        print("Error:", resp.status_code, resp.text)
-        return None
+    try:
+        headers = {"Authorization": f"Bearer {TOKEN}"}
+        resp = requests.get(f"{BASE_URL}/api/v1/posts", headers=headers)
+        if resp.status_code != 200:
+            print("Error:", resp.status_code, resp.text)
+            return None
+    except requests.exceptions.HTTPError as e:
+        print("HTTP error: ", e)
+    except Exception as e:
+        print("Unexpected error: ", e)
 
     return resp.json()
 
@@ -47,22 +51,27 @@ def is_checkin_post(post):
     return "check-in" in title
 
 def reply_to_checkin(post_id):
-    url=f"{BASE_URL}/api/v1/posts/{post_id}/comments"
-    headers={"Authorization": f"Bearer {TOKEN}"}
-    payload={"body": "Checking in!"}
+    try:
+        url=f"{BASE_URL}/api/v1/posts/{post_id}/comments"
+        headers={"Authorization": f"Bearer {TOKEN}"}
+        payload={"body": "Checking in!"}
 
-    resp = requests.post(url, headers=headers, json=payload)
+        resp = requests.post(url, headers=headers, json=payload)
 
-    if(resp.status_code==201):
-        print(f"✓ Replied to check-in {post_id}")
-        return True
+        if(resp.status_code==201):
+            print(f"✓ Replied to check-in {post_id}")
+            return True
 
-    if resp.status_code==423:
-        print(f"✗ Window closed for {post_id} (423)")
+        if resp.status_code==423:
+            print(f"✗ Window closed for {post_id} (423)")
+            return False
+
+        print(f"✗ Error replying to {post_id}: {resp.status_code} {resp.text}")
         return False
-
-    print(f"✗ Error replying to {post_id}: {resp.status_code} {resp.text}")
-    return False
+    except requests.exceptions.HTTPError as e:
+        print("HTTP error: ", e)
+    except Exception as e:
+        print("Unexpected error: ", e)
 
 def main():
     raw_posts = get_posts()

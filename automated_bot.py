@@ -128,9 +128,6 @@ def main():
     with open(os.path.join(OUTPUT_DIR, "collected.json"), "w") as f:
         json.dump(collected, f, indent=2)
 
-    with open(os.path.join(OUTPUT_DIR, "raw_posts.json"), "w") as f:
-        json.dump(raw_posts, f, indent=2)
-
     #Task 2: Reply to check-ins
     checkins = [p for p in instructor_posts if is_checkin_post(p)]
 

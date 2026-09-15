@@ -63,19 +63,21 @@ def reply_to_checkin(post_id):
         resp = requests.post(url, headers=headers, json=payload)
 
         if(resp.status_code==201):
-            print(f"✓ Replied to check-in {post_id}")
+            #print(f"✓ Replied to check-in {post_id}")
             return True
 
         if resp.status_code==423:
-            print(f"✗ Window closed for {post_id} (423)")
+            #print(f"✗ Window closed for {post_id} (423)")
             return False
 
-        print(f"✗ Error replying to {post_id}: {resp.status_code} {resp.text}")
+        #print(f"✗ Error replying to {post_id}: {resp.status_code} {resp.text}")
         return False
     except requests.exceptions.HTTPError as e:
-        print("HTTP error: ", e)
+        #print("HTTP error: ", e)
+        return False
     except Exception as e:
-        print("Unexpected error: ", e)
+        #print("Unexpected error: ", e)
+        return False
 
 def has_already_replied(post_id):
     url = f"{BASE_URL}/api/v1/posts/{post_id}/comments"
@@ -84,7 +86,7 @@ def has_already_replied(post_id):
     resp= requests.get(url, headers=headers)
 
     if resp.status_code != 200:
-        print("Error fetching comments for {post_id}: {resp.status_code}")
+        #print("Error fetching comments for {post_id}: {resp.status_code}")
         return False
 
     comments = resp.json()
@@ -129,8 +131,6 @@ def main():
     with open(os.path.join(OUTPUT_DIR, "raw_posts.json"), "w") as f:
         json.dump(raw_posts, f, indent=2)
 
-    print("Collection complete.")
-
     #Task 2: Reply to check-ins
     checkins = [p for p in instructor_posts if is_checkin_post(p)]
 
@@ -138,8 +138,6 @@ def main():
         if not has_already_replied(chk["id"]):
             reply_to_checkin(chk["id"])
             continue
-        else:
-            print(f"Already replied to post {chk["id"]}")
 
 if __name__ == "__main__":
     main()

@@ -1,0 +1,158 @@
+[
+  {
+    "title": "Sept 16 check-in",
+    "body": "Daily check-in for Wednesday 16 September. Reply to this post to check in.",
+    "tags": [
+      "check-in"
+    ],
+    "createdAt": null,
+    "updatedAt": null,
+    "attachments": []
+  },
+  {
+    "title": "Check-in for Sept 15",
+    "body": "Daily check-in for Tuesday 15 September. Reply to this post to check in.",
+    "tags": [
+      "check-in"
+    ],
+    "createdAt": null,
+    "updatedAt": null,
+    "attachments": []
+  },
+  {
+    "title": "Sept 14 check-in",
+    "body": "Daily check-in for Monday 14 September. Reply to this post to check in.",
+    "tags": [
+      "check-in"
+    ],
+    "createdAt": null,
+    "updatedAt": null,
+    "attachments": []
+  },
+  {
+    "title": "Check-in for Sept 13",
+    "body": "Daily check-in for Sunday 13 September. Reply to this post to check in.",
+    "tags": [
+      "check-in"
+    ],
+    "createdAt": null,
+    "updatedAt": null,
+    "attachments": []
+  },
+  {
+    "title": "Sept 12 check-in",
+    "body": "Daily check-in for Saturday 12 September. Reply to this post to check in.",
+    "tags": [
+      "check-in"
+    ],
+    "createdAt": null,
+    "updatedAt": null,
+    "attachments": []
+  },
+  {
+    "title": "Check-in for Sept 11",
+    "body": "Daily check-in for Friday 11 September. Reply to this post to check in.",
+    "tags": [
+      "check-in"
+    ],
+    "createdAt": null,
+    "updatedAt": null,
+    "attachments": []
+  },
+  {
+    "title": "Sept 10 check-in",
+    "body": "Daily check-in for Thursday 10 September. Reply to this post to check in.",
+    "tags": [
+      "check-in"
+    ],
+    "createdAt": null,
+    "updatedAt": null,
+    "attachments": []
+  },
+  {
+    "title": "Check-in for Sept 9",
+    "body": "Daily check-in for Wednesday 09 September. Reply to this post to check in.",
+    "tags": [
+      "check-in"
+    ],
+    "createdAt": null,
+    "updatedAt": null,
+    "attachments": []
+  },
+  {
+    "title": "Sept 8 check-in",
+    "body": "Daily check-in for Tuesday 08 September. Reply to this post to check in.",
+    "tags": [
+      "check-in"
+    ],
+    "createdAt": null,
+    "updatedAt": null,
+    "attachments": []
+  },
+  {
+    "title": "Check-in for Sept 7",
+    "body": "Daily check-in for Monday 07 September. Reply to this post to check in.",
+    "tags": [
+      "check-in"
+    ],
+    "createdAt": null,
+    "updatedAt": null,
+    "attachments": []
+  },
+  {
+    "title": "Reminder: GitHub cron runs in UTC",
+    "body": "Central time is UTC-5 until 1 November.",
+    "tags": [
+      "tip"
+    ],
+    "createdAt": null,
+    "updatedAt": null,
+    "attachments": []
+  },
+  {
+    "title": "Week 5 Pandas notes",
+    "body": "Two files for Week 5: a one-page Pandas quick reference, and a small CSV to practise groupby and mean on before you start Mini Project 3.",
+    "tags": [
+      "week5",
+      "pandas"
+    ],
+    "createdAt": null,
+    "updatedAt": null,
+    "attachments": [
+      {
+        "filename": "pandas_quick_reference.md",
+        "savedPath": "artifact/files/pandas_quick_reference.md"
+      },
+      {
+        "filename": "sample_scores.csv",
+        "savedPath": "artifact/files/sample_scores.csv"
+      }
+    ]
+  },
+  {
+    "title": "Course syllabus, Fall 2026",
+    "body": "The Fall 2026 syllabus is attached as a PDF.",
+    "tags": [
+      "syllabus"
+    ],
+    "createdAt": null,
+    "updatedAt": null,
+    "attachments": [
+      {
+        "filename": "INF601_Syllabus_F2026.pdf",
+        "savedPath": "artifact/files/INF601_Syllabus_F2026.pdf"
+      }
+    ]
+  },
+  {
+    "title": "Scheduled bot lab: what this feed is for",
+    "body": "This feed is where I post course material for the Scheduled Bot lab. Your bot's first job is to collect everything I publish here: every post, its full body, its tags and timestamps, and every attached file.\n\nSome posts are long, like this one, and some are a single line. Some carry one attachment, some carry several, and many carry none. A correct collector does not care which: it pages through all of my posts using the author filter, saves each body exactly as the API returns it, and downloads every file listed under attachments.\n\nYour bot's second job is to reply to my daily check-in posts while each one is open. Those are the only posts with the check-in keyword in the title. Do not reply to this post or any other regular post, and never reply to another student's post.\n\nI will add more posts over the coming days, so your artifact should grow as your schedule runs. Whatever is in your committed artifact folder at the deadline is what I grade.",
+    "tags": [
+      "lab",
+      "info"
+    ],
+    "createdAt": null,
+    "updatedAt": null,
+    "attachments": []
+  }
+]
